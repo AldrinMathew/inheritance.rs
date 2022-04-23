@@ -36,7 +36,12 @@ In this case,
 
 The data for an instance of the derived type is stored alongside the base type. The somewhat popular way to achieve inheritance in Rust is adding the instance of the base class as a member of the the derived class. But this makes the rest of the design and implementation redundant. Basically you will have to write base functions for all derived types in such a scenario. The above method however can avoid that problem.
 
+## Type Names
+
+Type names (aliases), for one thing, makes it easier to work with derived types. It also is a better representation of the concept of inheritance. For example, `EmployeeTy` is a better way to represent the datatype than `Human<Employee>`. The former is a clear indication of the kind of the datatype. The latter, not so much, because generic types have their own purpose. And the latter is perceived as if the type `Human` have a prominence over the type `Employee`.
+
 ## Base Functions
 
-Base functions in this context means functions that can be called on the base type as well as all derived types. Translating this feature to Rust, it makes more sense to call these ***Generic Base Functions***. Because in order to be able to call these functions on all possible variations of the base type, you will have to implement functions for `Human<T>` and not `Human<()>`.
+Base functions in this context means functions that can be called on the base type as well as all derived types. Translating this feature to Rust, it makes more sense to call these **_Generic Base Functions_**. Because in order to be able to call these functions on all possible variations of the base type, you will have to implement functions for `Human<T>` and not `Human<()>`.
 Coming from other languages like C++, Java, Dart... that has extensive support for Object Oriented Programming, one would assume that the implementations should be for `Human<()>`. However `Human<()>` is also a derived datatype and so any functions implemented for `Human<()>` will be limited to that type.
+
